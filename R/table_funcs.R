@@ -19,7 +19,7 @@ get_conversion_tbl <- function(data, curve_duration) {
     dplyr::ungroup()
 
   output_tbl <- grouped_counts_tbl %>%
-    dplyr::mutate(conversion_rate = number_conversions / number_of_installs * 100) %>%  # turn counts into rates
+    dplyr::mutate(conversion_rate = number_conversions / number_of_installs) %>%  # turn counts into rates
     dplyr::group_by(campaign_source, type) %>%
     dplyr::arrange(campaign_source, type, days_to_convert) %>%
     dplyr::mutate(cum_conversion_rate = cumsum(conversion_rate)) %>% # get cumulative rate
