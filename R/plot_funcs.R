@@ -33,6 +33,7 @@ get_conversion_plot <- function(data, plot_type = c("incremental", "cumulative")
 
   if(plot_type == "cumulative") {
     p <- p + ggplot2::facet_wrap(dplyr::vars(type))
+    p <- p + ggplot2::scale_y_continuous(labels = scales::percent_format(accuracy = 1))
   }
 
   p
